@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: toggled by adding `.dark` on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* surfaces */
+  --bg: #fbf8f4; /* warm paper */
+  --surface: #ffffff;
+  --surface-2: #f3ede4;
+  --border: #e9e1d6;
+
+  /* text */
+  --ink: #1c1b19;
+  --muted: #6b6760;
+
+  /* brand / semantic */
+  --primary: #0e7c5a; /* emerald */
+  --primary-ink: #ffffff;
+  --income: #0e7c5a;
+  --over: #dc2626;
+
+  /* category hues */
+  --cat-food: #e8623d;
+  --cat-data: #3b82f6;
+  --cat-misc: #f59e0b;
+  --cat-giving: #8b5cf6;
+  --cat-other: #64748b;
+
+  --radius: 1rem;
+}
+
+.dark {
+  --bg: #14130f;
+  --surface: #1f1d18;
+  --surface-2: #2a271f;
+  --border: #34302699;
+
+  --ink: #f4f1ea;
+  --muted: #9a958b;
+
+  --primary: #2fbe8c;
+  --primary-ink: #0a1f17;
+  --income: #2fbe8c;
+  --over: #f4715e;
+
+  --cat-food: #f2774e;
+  --cat-data: #5b9bff;
+  --cat-misc: #fbbf24;
+  --cat-giving: #a78bfa;
+  --cat-other: #94a3b8;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-income: var(--income);
+  --color-over: var(--over);
+
+  --color-cat-food: var(--cat-food);
+  --color-cat-data: var(--cat-data);
+  --color-cat-misc: var(--cat-misc);
+  --color-cat-giving: var(--cat-giving);
+  --color-cat-other: var(--cat-other);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+
+  --radius-card: 1.25rem;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  /* prevent the rubber-band / accidental zoom feel on touch devices */
+  overscroll-behavior-y: none;
+}
+
+/* Money and figures should always align */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Hide scrollbars on horizontal chip rows while keeping scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Respect device safe areas (iPad/phone notches, home indicator) */
+.safe-b {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safe-t {
+  padding-top: env(safe-area-inset-top);
+}
